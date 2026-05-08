@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>15ª Gerência Regional – Queimadas / PB</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="top">
+    <div class="container">
+      <div class="header-inner d-flex align-items-center justify-content-between flex-wrap gap-3">
+        <div class="d-flex align-items-center gap-3">
+          <div class="logo-emblem"><i class="bi bi-building-fill"></i></div>
+          <div class="header-title">
+            <span class="header-sup">Governo do Estado da Paraíba</span>
+            <h1 class="header-name">15ª Gerência Regional</h1>
+            <span class="header-sub"><i class="bi bi-geo-alt-fill me-1"></i>Queimadas – PB</span>
+          </div>
+        </div>
+        <nav class="header-nav d-none d-md-flex align-items-center gap-3">
+          <a href="#setores" class="nav-link-custom">Setores</a>
+          <a href="#graficos" class="nav-link-custom">Dados</a>
+         
+         
+        </nav>
+        <button class="btn-hamburger d-md-none" id="mobileMenuBtn" aria-label="Menu"><i class="bi bi-list"></i></button>
+      </div>
+      <div class="mobile-menu d-md-none" id="mobileMenu">
+        <a href="#setores"><i class="bi bi-grid-3x3-gap-fill me-2"></i>Setores</a>
+        <a href="#graficos"><i class="bi bi-bar-chart-fill me-2"></i>Dados</a>
+        
+      </div>
+    </div>
+  </header>
+
+  <!-- FAIXA DO GOVERNO (abaixo do header) -->
+  <div class="gov-stripe" aria-hidden="true">
+    <span class="stripe-yellow"></span>
+    <span class="stripe-red"></span>
+    <span class="stripe-blue"></span>
+    <span class="stripe-green"></span>
+    <span class="stripe-black"></span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="hero-bg-pattern" aria-hidden="true"></div>
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <div class="col-lg-7">
+          <div class="hero-badge"><i class="bi bi-shield-fill-check me-2"></i>Serviço Público de Excelência</div>
+          <h2 class="hero-title">Servindo com<br><span class="hero-highlight">dedicação</span><br>e transparência.</h2>
+          <p class="hero-desc">A 15ª Gerência Regional atua em Queimadas e municípios vizinhos, garantindo serviços públicos de qualidade para toda a população paraibana.</p>
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a href="#setores" class="btn-primary-custom"><i class="bi bi-grid-3x3-gap-fill me-2"></i>Ver Setores</a>
+            
+          </div>
+        </div>
+        <div class="col-lg-5 d-flex justify-content-center">
+          <div class="hero-stats-card">
+            <div class="stat-item">
+              <span class="stat-number" data-target="12">0</span>
+              <span class="stat-label">Setores Ativos</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="24">0</span>
+              <span class="stat-label">Municípios Atendidos</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="1200">0</span>
+              <span class="stat-label">Atendimentos/Mês</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- SETORES -->
+    <section class="section-setores" id="setores">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Estrutura Organizacional</span>
+          <h2 class="section-title">Nossos Setores</h2>
+          <p class="section-desc">Conheça as unidades de atendimento e suas responsabilidades dentro da 15ª Gerência Regional.</p>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filter-bar d-flex flex-wrap justify-content-center gap-2 mb-5" id="filterBar">
+          <button class="filter-btn active" data-filter="all"><i class="bi bi-grid me-1"></i>Todos</button>
+          <button class="filter-btn" data-filter="administrativo"><i class="bi bi-briefcase me-1"></i>Administrativo</button>
+          <button class="filter-btn" data-filter="tecnico"><i class="bi bi-tools me-1"></i>Técnico</button>
+          <button class="filter-btn" data-filter="social"><i class="bi bi-people me-1"></i>Social</button>
+          <button class="filter-btn" data-filter="financeiro"><i class="bi bi-currency-dollar me-1"></i>Financeiro</button>
+        </div>
+
+        <!-- Cards -->
+        <div class="row g-4" id="setoresGrid">
+
+          <div class="col-sm-6 col-lg-4 setor-card-wrap" data-categoria="administrativo">
+            <div class="setor-card" tabindex="0">
+              <div class="setor-card-icon bg-primary-custom"><i class="bi bi-building"></i></div>
+              <div class="setor-card-body">
+                <span class="setor-tag tag-administrativo">Administrativo</span>
+                <h3 class="setor-card-title">Setor Administrativo</h3>
+                <p class="setor-card-desc">Coordenação geral das atividades internas, gestão de documentos, processos e apoio institucional.</p>
+                <ul class="setor-list">
+                  <li><i class="bi bi-check-circle-fill"></i>Gestão de Pessoal</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Protocolo e Arquivo</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Comunicação Interna</li>
+                </ul>
+              </div>
+              <div class="setor-card-footer">
+                <span class="setor-status status-ativo"><i class="bi bi-circle-fill me-1"></i>Ativo</span>
+                <span class="setor-ramal"><i class="bi bi-telephone me-1"></i>Ramal 101</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 setor-card-wrap" data-categoria="administrativo">
+            <div class="setor-card" tabindex="0">
+              <div class="setor-card-icon bg-green-custom"><i class="bi bi-person-badge"></i></div>
+              <div class="setor-card-body">
+                <span class="setor-tag tag-administrativo">Administrativo</span>
+                <h3 class="setor-card-title">Recursos Humanos</h3>
+                <p class="setor-card-desc">Gestão de servidores, benefícios, folha de pagamento, férias, licenças e capacitação profissional.</p>
+                <ul class="setor-list">
+                  <li><i class="bi bi-check-circle-fill"></i>Folha de Pagamento</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Férias e Licenças</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Capacitação</li>
+                </ul>
+              </div>
+              <div class="setor-card-footer">
+                <span class="setor-status status-ativo"><i class="bi bi-circle-fill me-1"></i>Ativo</span>
+                <span class="setor-ramal"><i class="bi bi-telephone me-1"></i>Ramal 102</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 setor-card-wrap" data-categoria="financeiro">
+            <div class="setor-card" tabindex="0">
+              <div class="setor-card-icon bg-accent-custom"><i class="bi bi-cash-stack"></i></div>
+              <div class="setor-card-body">
+                <span class="setor-tag tag-financeiro">Financeiro</span>
+                <h3 class="setor-card-title">Setor Financeiro</h3>
+                <p class="setor-card-desc">Execução orçamentária, controle de despesas, empenhos, liquidações e prestação de contas.</p>
+                <ul class="setor-list">
+                  <li><i class="bi bi-check-circle-fill"></i>Orçamento e Finanças</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Empenho e Liquidação</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Prestação de Contas</li>
+                </ul>
+              </div>
+              <div class="setor-card-footer">
+                <span class="setor-status status-ativo"><i class="bi bi-circle-fill me-1"></i>Ativo</span>
+                <span class="setor-ramal"><i class="bi bi-telephone me-1"></i>Ramal 103</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 setor-card-wrap" data-categoria="tecnico">
+            <div class="setor-card" tabindex="0">
+              <div class="setor-card-icon bg-primary-custom"><i class="bi bi-pc-display-horizontal"></i></div>
+              <div class="setor-card-body">
+                <span class="setor-tag tag-tecnico">Técnico</span>
+                <h3 class="setor-card-title">Tecnologia da Informação</h3>
+                <p class="setor-card-desc">Suporte técnico, manutenção de sistemas, redes, segurança da informação e infraestrutura digital.</p>
+                <ul class="setor-list">
+                  <li><i class="bi bi-check-circle-fill"></i>Suporte Técnico</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Redes e Sistemas</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Segurança Digital</li>
+                </ul>
+              </div>
+              <div class="setor-card-footer">
+                <span class="setor-status status-ativo"><i class="bi bi-circle-fill me-1"></i>Ativo</span>
+                <span class="setor-ramal"><i class="bi bi-telephone me-1"></i>Ramal 104</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 setor-card-wrap" data-categoria="social">
+            <div class="setor-card" tabindex="0">
+              <div class="setor-card-icon bg-green-custom"><i class="bi bi-heart-pulse"></i></div>
+              <div class="setor-card-body">
+                <span class="setor-tag tag-social">Social</span>
+                <h3 class="setor-card-title">Assistência Social</h3>
+                <p class="setor-card-desc">Atendimento à população vulnerável, programas sociais, benefícios e encaminhamentos assistenciais.</p>
+                <ul class="setor-list">
+                  <li><i class="bi bi-check-circle-fill"></i>Programas Sociais</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Benefícios Assistenciais</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Atendimento Familiar</li>
+                </ul>
+              </div>
+              <div class="setor-card-footer">
+                <span class="setor-status status-ativo"><i class="bi bi-circle-fill me-1"></i>Ativo</span>
+                <span class="setor-ramal"><i class="bi bi-telephone me-1"></i>Ramal 105</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 setor-card-wrap" data-categoria="administrativo">
+            <div class="setor-card" tabindex="0">
+              <div class="setor-card-icon bg-danger-custom"><i class="bi bi-journal-text"></i></div>
+              <div class="setor-card-body">
+                <span class="setor-tag tag-administrativo">Administrativo</span>
+                <h3 class="setor-card-title">Setor Jurídico</h3>
+                <p class="setor-card-desc">Assessoria jurídica, análise de contratos, processos administrativos e pareceres legais.</p>
+                <ul class="setor-list">
+                  <li><i class="bi bi-check-circle-fill"></i>Assessoria Jurídica</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Contratos e Convênios</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Processos Administrativos</li>
+                </ul>
+              </div>
+              <div class="setor-card-footer">
+                <span class="setor-status status-ativo"><i class="bi bi-circle-fill me-1"></i>Ativo</span>
+                <span class="setor-ramal"><i class="bi bi-telephone me-1"></i>Ramal 106</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 setor-card-wrap" data-categoria="social">
+            <div class="setor-card" tabindex="0">
+              <div class="setor-card-icon bg-primary-custom"><i class="bi bi-mortarboard"></i></div>
+              <div class="setor-card-body">
+                <span class="setor-tag tag-social">Social</span>
+                <h3 class="setor-card-title">Setor de Educação</h3>
+                <p class="setor-card-desc">Apoio às unidades escolares, supervisão pedagógica, formação docente e gestão escolar regional.</p>
+                <ul class="setor-list">
+                  <li><i class="bi bi-check-circle-fill"></i>Supervisão Pedagógica</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Formação de Professores</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Gestão Escolar</li>
+                </ul>
+              </div>
+              <div class="setor-card-footer">
+                <span class="setor-status status-ativo"><i class="bi bi-circle-fill me-1"></i>Ativo</span>
+                <span class="setor-ramal"><i class="bi bi-telephone me-1"></i>Ramal 107</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 setor-card-wrap" data-categoria="tecnico">
+            <div class="setor-card" tabindex="0">
+              <div class="setor-card-icon bg-accent-custom"><i class="bi bi-hammer"></i></div>
+              <div class="setor-card-body">
+                <span class="setor-tag tag-tecnico">Técnico</span>
+                <h3 class="setor-card-title">Infraestrutura</h3>
+                <p class="setor-card-desc">Conservação de bens patrimoniais, obras públicas, manutenção predial e serviços gerais.</p>
+                <ul class="setor-list">
+                  <li><i class="bi bi-check-circle-fill"></i>Manutenção Predial</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Obras e Reformas</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Serviços Gerais</li>
+                </ul>
+              </div>
+              <div class="setor-card-footer">
+                <span class="setor-status status-ativo"><i class="bi bi-circle-fill me-1"></i>Ativo</span>
+                <span class="setor-ramal"><i class="bi bi-telephone me-1"></i>Ramal 108</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 setor-card-wrap" data-categoria="financeiro">
+            <div class="setor-card" tabindex="0">
+              <div class="setor-card-icon bg-danger-custom"><i class="bi bi-clipboard2-check"></i></div>
+              <div class="setor-card-body">
+                <span class="setor-tag tag-financeiro">Financeiro</span>
+                <h3 class="setor-card-title">Controle Interno</h3>
+                <p class="setor-card-desc">Auditoria interna, fiscalização de processos, conformidade legal e transparência nos atos administrativos.</p>
+                <ul class="setor-list">
+                  <li><i class="bi bi-check-circle-fill"></i>Auditoria Interna</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Conformidade Legal</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Transparência</li>
+                </ul>
+              </div>
+              <div class="setor-card-footer">
+                <span class="setor-status status-ativo"><i class="bi bi-circle-fill me-1"></i>Ativo</span>
+                <span class="setor-ramal"><i class="bi bi-telephone me-1"></i>Ramal 109</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 setor-card-wrap" data-categoria="administrativo">
+            <div class="setor-card" tabindex="0">
+              <div class="setor-card-icon bg-green-custom"><i class="bi bi-megaphone"></i></div>
+              <div class="setor-card-body">
+                <span class="setor-tag tag-administrativo">Administrativo</span>
+                <h3 class="setor-card-title">Comunicação e Mídia</h3>
+                <p class="setor-card-desc">Divulgação de ações institucionais, assessoria de imprensa, redes sociais e comunicação com a sociedade.</p>
+                <ul class="setor-list">
+                  <li><i class="bi bi-check-circle-fill"></i>Assessoria de Imprensa</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Redes Sociais</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Publicações Oficiais</li>
+                </ul>
+              </div>
+              <div class="setor-card-footer">
+                <span class="setor-status status-ativo"><i class="bi bi-circle-fill me-1"></i>Ativo</span>
+                <span class="setor-ramal"><i class="bi bi-telephone me-1"></i>Ramal 110</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 setor-card-wrap" data-categoria="social">
+            <div class="setor-card" tabindex="0">
+              <div class="setor-card-icon bg-primary-custom"><i class="bi bi-bandaid"></i></div>
+              <div class="setor-card-body">
+                <span class="setor-tag tag-social">Social</span>
+                <h3 class="setor-card-title">Saúde do Servidor</h3>
+                <p class="setor-card-desc">Acompanhamento de saúde funcional, perícias médicas, afastamentos e qualidade de vida no trabalho.</p>
+                <ul class="setor-list">
+                  <li><i class="bi bi-check-circle-fill"></i>Perícia Médica</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Saúde Ocupacional</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Qualidade de Vida</li>
+                </ul>
+              </div>
+              <div class="setor-card-footer">
+                <span class="setor-status status-ativo"><i class="bi bi-circle-fill me-1"></i>Ativo</span>
+                <span class="setor-ramal"><i class="bi bi-telephone me-1"></i>Ramal 111</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4 setor-card-wrap" data-categoria="financeiro">
+            <div class="setor-card" tabindex="0">
+              <div class="setor-card-icon bg-accent-custom"><i class="bi bi-cart3"></i></div>
+              <div class="setor-card-body">
+                <span class="setor-tag tag-financeiro">Financeiro</span>
+                <h3 class="setor-card-title">Compras e Licitações</h3>
+                <p class="setor-card-desc">Processos licitatórios, aquisição de bens e serviços, contratos e gestão do patrimônio público.</p>
+                <ul class="setor-list">
+                  <li><i class="bi bi-check-circle-fill"></i>Licitações Públicas</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Contratos e Atas</li>
+                  <li><i class="bi bi-check-circle-fill"></i>Gestão Patrimonial</li>
+                </ul>
+              </div>
+              <div class="setor-card-footer">
+                <span class="setor-status status-ativo"><i class="bi bi-circle-fill me-1"></i>Ativo</span>
+                <span class="setor-ramal"><i class="bi bi-telephone me-1"></i>Ramal 112</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="no-results text-center d-none" id="noResults">
+          <i class="bi bi-search"></i>
+          <p>Nenhum setor encontrado para este filtro.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRÁFICOS -->
+    <section class="section-graficos" id="graficos">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-tag">Transparência</span>
+          <h2 class="section-title">Dados e Estatísticas</h2>
+          <p class="section-desc">Acompanhe os indicadores de desempenho da 15ª Gerência Regional.</p>
+        </div>
+
+        <div class="d-flex justify-content-center mb-5">
+          <div class="period-filter">
+            <button class="period-btn active" data-period="mensal">Mensal</button>
+            <button class="period-btn" data-period="trimestral">Trimestral</button>
+            <button class="period-btn" data-period="anual">Anual</button>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h4 class="chart-title"><i class="bi bi-bar-chart me-2"></i>Atendimentos por Setor</h4>
+                <span class="chart-badge">2025</span>
+              </div>
+              <div class="chart-container"><canvas id="chartAtendimentos"></canvas></div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h4 class="chart-title"><i class="bi bi-pie-chart me-2"></i>Setores por Categoria</h4>
+                <span class="chart-badge">Distribuição</span>
+              </div>
+              <div class="chart-container"><canvas id="chartCategorias"></canvas></div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h4 class="chart-title"><i class="bi bi-graph-up me-2"></i>Evolução de Atendimentos</h4>
+                <span class="chart-badge">Histórico</span>
+              </div>
+              <div class="chart-container chart-container-wide"><canvas id="chartEvolucao"></canvas></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+          
+    </section>
+
+  </main>
+
+  <!-- FAIXA DO GOVERNO (acima do footer) -->
+  <div class="gov-stripe" aria-hidden="true">
+    <span class="stripe-yellow"></span>
+    <span class="stripe-red"></span>
+    <span class="stripe-blue"></span>
+    <span class="stripe-green"></span>
+    <span class="stripe-black"></span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row gy-4 align-items-center">
+        <div class="col-md-6">
+          <div class="d-flex align-items-center gap-3 mb-2">
+            <div class="footer-logo-emblem"><i class="bi bi-building-fill"></i></div>
+            <div>
+              <div class="footer-name">15ª Gerência Regional</div>
+              <div class="footer-sub">Governo do Estado da Paraíba</div>
+            </div>
+          </div>
+          <p class="footer-desc">Comprometidos com o serviço público de qualidade para os cidadãos de Queimadas e região.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <div class="footer-links d-flex flex-wrap gap-3 justify-content-md-end mb-3">
+            <a href="#setores">Setores</a>
+            <a href="#graficos">Dados</a>
+            
+            <a href="#">Transparência</a>
+          </div>
+          <p class="footer-copy">© 2025 – Governo do Estado da Paraíba. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="btn-back-top" id="backTop" aria-label="Voltar ao topo"><i class="bi bi-arrow-up"></i></button>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
